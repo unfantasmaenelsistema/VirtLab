@@ -1,6 +1,0 @@
-{
-  "name": "VirtLab - Simulador de Oracle VM VirtualBox",
-  "description": "Simulador educativo interactivo con interfaz de escritorio clásica que clona visual y funcionalmente el Administrador de Oracle VM VirtualBox en HTML5, CSS3 y Vanilla JS.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
