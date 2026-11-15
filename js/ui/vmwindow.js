@@ -322,8 +322,8 @@ function renderInstallForm(vm, scr, s) {
     ${fam === 'windows' ? `<label>Edición:</label><select><option>${esc(ISOS.find((i) => i.os === iso)?.edition || os.label)}</option></select>` : ''}
     <label>Nombre del equipo:</label><input type="text" id="if-host" value="${esc(fam === 'windows' ? `DESKTOP-${vm.name.replace(/[^A-Za-z0-9]/g, '').toUpperCase().slice(0, 7) || 'VM'}` : vm.name.toLowerCase().replace(/[^a-z0-9-]/g, '') || 'servidor')}">
     <label>Nombre de usuario:</label><input type="text" id="if-user" value="${defUser}">
-    <label>Contraseña:</label><input type="password" id="if-pass" value="">
-    <label>Confirmar contraseña:</label><input type="password" id="if-pass2" value="">
+    <label>Contraseña:</label><input type="text" class="vl-secret" autocomplete="off" spellcheck="false" id="if-pass" value="">
+    <label>Confirmar contraseña:</label><input type="text" class="vl-secret" autocomplete="off" spellcheck="false" id="if-pass2" value="">
     ${fam === 'linux' ? '<label></label><label class="chk"><input type="checkbox" id="if-ssh" checked> Instalar el servidor OpenSSH</label>' : '<label></label><label class="chk"><input type="checkbox" id="if-lic"> Acepto los términos de licencia del software de Microsoft</label>'}
     <label>Disco de destino:</label><span>${m ? `${esc(m.name)} — ${m.sizeGB} GB${m.content ? ' <b style="color:#c62828">(contiene un sistema: se borrará)</b>' : ' (espacio sin asignar)'}` : '<b style="color:#c62828">No se ha detectado ningún disco</b>'}</span>
   </div>
@@ -527,7 +527,7 @@ function trackPreview(vm, term) {
 // ------------------------------------------------------------------ Windows
 function renderWinLogin(vm, scr, c) {
   const u = c.users[0];
-  scr.innerHTML = `<div class="win-lock"><div class="who"><div class="avatar">👤</div><div style="font-size:22px">${esc(u.name)}</div><input type="password" id="wl-pass" placeholder="Contraseña" aria-label="Contraseña"><div class="err" id="wl-err"></div><button class="btn" id="wl-go">Iniciar sesión</button><div style="font-size:11px;opacity:.8">Ctrl+Alt+Supr se envía con Entrada › Teclado</div></div></div>`;
+  scr.innerHTML = `<div class="win-lock"><div class="who"><div class="avatar">👤</div><div style="font-size:22px">${esc(u.name)}</div><input type="text" class="vl-secret" autocomplete="off" spellcheck="false" id="wl-pass" placeholder="Contraseña" aria-label="Contraseña de la máquina virtual"><div class="err" id="wl-err"></div><button class="btn" id="wl-go">Iniciar sesión</button><div style="font-size:11px;opacity:.8">Ctrl+Alt+Supr se envía con Entrada › Teclado</div><div style="font-size:11px;opacity:.8;max-width:300px;text-align:center">Máquina virtual simulada de VirtLab: usa la contraseña de prácticas de su Descripción, nunca una real.</div></div></div>`;
   const inp = scr.querySelector('#wl-pass');
   setTimeout(() => inp.focus(), 50);
   const go = () => {

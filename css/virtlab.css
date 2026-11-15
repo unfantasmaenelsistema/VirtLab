@@ -442,3 +442,6 @@ details.adv > summary { cursor: default; padding: 4px 0; color: var(--text); }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid > label:not(.chk) { text-align: left; }
 }
+
+/* Contraseñas de prácticas: se ocultan con puntos, pero no son campos de contraseña del navegador */
+.vl-secret { -webkit-text-security: disc; text-security: disc; }
